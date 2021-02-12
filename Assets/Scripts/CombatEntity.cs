@@ -4,33 +4,22 @@ using UnityEngine;
 
 public class CombatEntity : MonoBehaviour
 {
-    public int maxHp;
-    public int hp;
-    public int atk;
+    //public void ReceiveDamage(int damage, int hp)
+    //{
+    //    hp -= damage;
+    //    if(IsDead(hp))
+    //    {
+    //        Die();
+    //    }
+    //}
 
-    public CombatEntity(int maxHp, int hp, int atk)
-    {
-        this.hp = hp;
-        this.maxHp = hp;
-        this.atk = atk;
-    }
+    //public bool IsDead(int hp)
+    //{
+    //    return hp <= 0;
+    //}
 
-    public void ReceiveDamage(int damage)
-    {
-        this.hp -= damage;
-        if(IsDead())
-        {
-            Die();
-        }
-    }
-
-    public bool IsDead()
-    {
-        return this.hp <= 0;
-    }
-
-    public void Die()
-    {
-        Destroy(this.gameObject);
-    }
+    //public void Die()
+    //{
+    //    Destroy(this.gameObject);
+    //}
 }
