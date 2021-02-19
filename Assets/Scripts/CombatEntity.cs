@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class CombatEntity : MonoBehaviour
 {
-    //public void ReceiveDamage(int damage, int hp)
+    //public virtual void ReceiveDamage(float damage, float hp)
     //{
     //    hp -= damage;
-    //    if(IsDead(hp))
+    //    if (IsDead(hp))
     //    {
     //        Die();
     //    }
     //}
 
-    //public bool IsDead(int hp)
-    //{
-    //    return hp <= 0;
-    //}
+    public bool IsDead(float hp)
+    {
+        return hp <= 0;
+    }
 
-    //public void Die()
-    //{
-    //    Destroy(this.gameObject);
-    //}
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
 }

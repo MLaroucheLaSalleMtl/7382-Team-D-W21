@@ -6,18 +6,27 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rigid;
     private Animator animator;
+    [SerializeField] private Transform playerPosition;
 
     private Vector2 movement;
-    [Range(0.1f, 10f)] [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private float movementSpeed = 10f;
 
     private bool attack = false;
-    public float cooltime = 0f;
+    private float cooltime = 0f;
+
+    private bool skill = false;
+    [SerializeField] private GameObject[] skillList;
+
+    private bool skillSwitch = false;
+    public int skillIndex = 0;
+
+    public static Vector3 playerDirection;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -29,6 +38,16 @@ public class PlayerMovement : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         attack = context.performed;
+    }
+
+    public void OnSkill(InputAction.CallbackContext context)
+    {
+        skill = context.performed;
+    }
+
+    public void OnSkillSwitch(InputAction.CallbackContext context)
+    {
+        skillSwitch = context.performed;
     }
 
     private void Attack()
@@ -51,11 +70,45 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("X", movement.x);
             animator.SetFloat("Y", movement.y);
             animator.SetBool("Moving", true);
-            rigidbody.MovePosition(rigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
+            rigid.MovePosition(rigid.position + movement * movementSpeed * Time.fixedDeltaTime);
         }
         else
         {
             animator.SetBool("Moving", false);
+        }
+    }
+
+    private void Skill()
+    {
+        if(skill && cooltime <= 0f)
+        {
+            cooltime = 0.3f;
+            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+            Instantiate(skillList[skillIndex], playerPosition.position, rotation);
+        }
+    }
+
+    private void SkillSwitch()
+    {
+        if (skillSwitch)
+        {
+            if (skillIndex + 1 < skillList.Length)
+            {
+                skillIndex++;
+            }
+            else
+            {
+                skillIndex = 0;
+            }
+        }
+    }
+
+    private void PlayerDirection()
+    {
+        if(movement.x != 0 || movement.y != 0)
+        {
+            playerDirection = new Vector3(movement.x, movement.y, 0f);
         }
     }
 
@@ -64,6 +117,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Attack();
         Move();
+        Skill();
+        SkillSwitch();
+        PlayerDirection();
     }
 
     private void LateUpdate()

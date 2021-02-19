@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : CombatEntity
 {
-    private float hp = 20;
-    private float atk = 10;
+    public float hp = 30;
+    public float atk = 10;
 
     public void ReceiveDamage(float damage)
     {
@@ -14,16 +14,6 @@ public class Enemy : CombatEntity
         {
             Die();
         }
-    }
-
-    public bool IsDead(float hp)
-    {
-        return hp <= 0;
-    }
-
-    public void Die()
-    {
-        Destroy(this.gameObject);
     }
 
     // Start is called before the first frame update
