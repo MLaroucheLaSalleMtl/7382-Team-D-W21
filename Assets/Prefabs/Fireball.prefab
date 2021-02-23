@@ -137,8 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   lifetime: 0.75
-  explosion: {fileID: 4747631976632022970, guid: b4501528a54a79d4dad1c63e85f7a275, type: 3}
-  playerAnimator: {fileID: 8234800572964161494, guid: 2687a7312906b5740bd6e5dc413e6f31, type: 3}
+  explosion: {fileID: 5761371979614453917, guid: 288b5ab36e95336419645e4bac186166, type: 3}
 --- !u!95 &-7777168734131630921
 Animator:
   serializedVersion: 3

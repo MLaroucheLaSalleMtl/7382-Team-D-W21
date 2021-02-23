@@ -97,13 +97,13 @@ TextureImporter:
     second: objects_30
   - first:
       213: 4698315425400886581
-    second: objects_31
+    second: Leaf 2
   - first:
       213: 2197855871317943228
     second: objects_32
   - first:
       213: 741922582067912797
-    second: objects_33
+    second: Leaf 2
   - first:
       213: -5884573130030058871
     second: objects_34
@@ -184,13 +184,13 @@ TextureImporter:
     second: objects_59
   - first:
       213: 9171275872940762989
-    second: objects_60
+    second: Leaf 3
   - first:
       213: -7079720951457237320
     second: objects_61
   - first:
       213: -1955489751837219279
-    second: objects_62
+    second: Leaf 4
   - first:
       213: -9193188169025097682
     second: objects_63
@@ -268,25 +268,25 @@ TextureImporter:
     second: objects_87
   - first:
       213: -6156538738564848463
-    second: objects_88
+    second: Fire 1
   - first:
       213: -3163061646288262330
-    second: objects_89
+    second: Fire 2
   - first:
       213: -8894351329827163213
-    second: objects_90
+    second: Fire 3
   - first:
       213: -7946122169745577622
-    second: objects_91
+    second: Fire 4
   - first:
       213: -8914528431609462405
-    second: objects_92
+    second: Fire 5
   - first:
       213: -76596165655313214
-    second: objects_93
+    second: Fire 6
   - first:
       213: 4810265859514842165
-    second: objects_94
+    second: Fire 7
   - first:
       213: -1722444441660132011
     second: objects_95
@@ -1816,13 +1816,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_31
+      name: Leaf 1
       rect:
         serializedVersion: 2
         x: 64
-        y: 288
-        width: 16
-        height: 16
+        y: 272
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1837,34 +1837,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_32
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 288
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb3a96d254a508e10800000000000000
-      internalID: 2197855871317943228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_33
+      name: Leaf 2
       rect:
         serializedVersion: 2
         x: 96
-        y: 288
-        width: 16
-        height: 16
+        y: 272
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2299,97 +2278,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_56
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d9565722825aef80800000000000000
-      internalID: -8076552262776366635
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_57
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 287eaaa3ad58c77e0800000000000000
-      internalID: -1766389781502433406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_58
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 269af3a56fc70e270800000000000000
-      internalID: 8277753512624892258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_59
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa4b1a2049ddfde90800000000000000
-      internalID: -6998631668141411158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_60
+      name: Leaf 3
       rect:
         serializedVersion: 2
         x: 128
         y: 272
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2404,34 +2299,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_61
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b6308bfd47cfbd90800000000000000
-      internalID: -7079720951457237320
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_62
+      name: Leaf 4
       rect:
         serializedVersion: 2
         x: 160
         y: 272
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2441,27 +2315,6 @@ TextureImporter:
       bones: []
       spriteID: 13663db6e64bcd4e0800000000000000
       internalID: -1955489751837219279
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_63
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e207fef511c3b6080800000000000000
-      internalID: -9193188169025097682
       vertices: []
       indices: 
       edges: []
@@ -2971,7 +2824,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_88
+      name: Fire 1
       rect:
         serializedVersion: 2
         x: 64
@@ -2992,7 +2845,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_89
+      name: Fire 2
       rect:
         serializedVersion: 2
         x: 80
@@ -3013,7 +2866,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_90
+      name: Fire 3
       rect:
         serializedVersion: 2
         x: 96
@@ -3034,7 +2887,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_91
+      name: Fire 4
       rect:
         serializedVersion: 2
         x: 112
@@ -3055,7 +2908,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_92
+      name: Fire 5
       rect:
         serializedVersion: 2
         x: 128
@@ -3076,7 +2929,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_93
+      name: Fire 6
       rect:
         serializedVersion: 2
         x: 144
@@ -3097,7 +2950,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_94
+      name: Fire 7
       rect:
         serializedVersion: 2
         x: 160

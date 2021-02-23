@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (skillSwitch)
         {
+            skillSwitch = false;
             if (skillIndex + 1 < skillList.Length)
             {
                 skillIndex++;
@@ -106,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerDirection()
     {
-        if(movement.x != 0 || movement.y != 0)
+        if((movement.x != 0 || movement.y != 0) && cooltime <= 0f)
         {
             playerDirection = new Vector3(movement.x, movement.y, 0f);
         }

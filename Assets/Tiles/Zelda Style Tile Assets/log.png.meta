@@ -19,7 +19,7 @@ TextureImporter:
     second: log_4
   - first:
       213: -22439546833456996
-    second: log_5
+    second: log_4
   - first:
       213: -451413936476517383
     second: log_6
@@ -37,7 +37,7 @@ TextureImporter:
     second: log_10
   - first:
       213: -2570500000468905864
-    second: log_11
+    second: log_10
   - first:
       213: 8498479158080882289
     second: log_12
@@ -55,7 +55,7 @@ TextureImporter:
     second: log_16
   - first:
       213: -822619953307990688
-    second: log_17
+    second: log_16
   - first:
       213: -128083769461270964
     second: log_18

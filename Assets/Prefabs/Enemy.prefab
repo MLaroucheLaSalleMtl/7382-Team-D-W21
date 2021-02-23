@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32afe45522add144aaa0116b097f1300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 50
+  atk: 10
+  kbduration: 0
 --- !u!50 &4416594882159872851
 Rigidbody2D:
   serializedVersion: 4
@@ -117,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &4416594882159872844
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
