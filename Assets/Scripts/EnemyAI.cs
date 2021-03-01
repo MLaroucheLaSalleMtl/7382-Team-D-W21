@@ -42,11 +42,10 @@ public class EnemyAI : Enemy
                 ChangeState(EnemyState.walk);
                 animator.SetBool("WakeUp", true);
             }
-            //else if(Vector3.Distance(target.position, transform.position) > ChaseRange)
-            //{
-            //    animator.SetBool("WakeUp", false);
-                
-            //}
+        }
+        else if(Vector3.Distance(target.position, transform.position) <= attacRange)
+        {
+            Attack();
         }
         else if (animator.GetBool("WakeUp"))
         {
@@ -87,6 +86,12 @@ public class EnemyAI : Enemy
         }
     }
 
+    private void Attack()
+    {
+        ChangeState(EnemyState.attack);
+        animator.SetBool("Attack", true);
+    }
+
     private void ChangeState(EnemyState newstate)
     {
         if(currentState != newstate)
@@ -94,6 +99,4 @@ public class EnemyAI : Enemy
             currentState = newstate;
         }
     }
-
-   
 }

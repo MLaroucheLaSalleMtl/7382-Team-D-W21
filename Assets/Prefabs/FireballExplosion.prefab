@@ -931,10 +931,10 @@ GameObject:
   - component: {fileID: 7416421713273387161}
   - component: {fileID: 1614422692351130583}
   - component: {fileID: -369031564409271816}
-  - component: {fileID: -2550313031920668034}
+  - component: {fileID: -490920330152052941}
   m_Layer: 0
   m_Name: FireballExplosion
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,9 +1040,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cce1dd3220214c42a4412ac2c2faa8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 25
   lifetime: 1
---- !u!114 &-2550313031920668034
+--- !u!114 &-490920330152052941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1051,7 +1051,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5761371979614453917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a137b06414df3a843b84873e3ba0bc83, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 1.5
+  KnockBackForce: 5
+  KnockBackTime: 0.3

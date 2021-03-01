@@ -2,32 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : Projectile
 {
-    private Rigidbody2D rigid;
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifetime = 0.75f;
-
     private Transform fireballPosition;
-    [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject explosionPrefab;
     
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(explosion, fireballPosition.position, Quaternion.identity);
+            fireballPosition = GetComponent<Transform>();
+            Instantiate(explosionPrefab, fireballPosition.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        else if (collider.gameObject.tag != "Player") Destroy(gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-        fireballPosition = GetComponent<Transform>();
-        rigid.velocity = PlayerMovement.playerDirection * speed;
-        Destroy(gameObject, lifetime);
+        else if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Projectile") Destroy(gameObject);
     }
 }

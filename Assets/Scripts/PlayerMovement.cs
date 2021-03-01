@@ -5,10 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
     private Rigidbody2D rigid;
     private Animator animator;
-    [SerializeField] private Transform playerPosition;
 
     private Vector2 movement;
     [SerializeField] private float movementSpeed = 10f;
@@ -18,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool skill = false;
     [SerializeField] private GameObject[] skillList;
+    private float skillcooltime = 0f;
 
     private bool skillSwitch = false;
     public int skillIndex = 0;
@@ -80,12 +79,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Skill()
     {
-        if(skill && cooltime <= 0f)
+        if(skill && cooltime <= 0f && skillcooltime <= 0f)
         {
             cooltime = 0.3f;
+            skillcooltime = 1f;
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-            Instantiate(skillList[skillIndex], playerPosition.position, rotation);
+            Instantiate(skillList[skillIndex], transform.position, rotation);
         }
     }
 
@@ -126,5 +126,6 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         if (cooltime > 0f) cooltime -= Time.deltaTime;
+        if (skillcooltime > 0f) skillcooltime -= Time.deltaTime;
     }
 }

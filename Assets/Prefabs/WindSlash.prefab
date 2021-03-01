@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3096549492069951548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 512068132440455252}
   m_RootOrder: 0
@@ -114,10 +114,10 @@ GameObject:
   - component: {fileID: -2592640008000572495}
   - component: {fileID: 89363080655522004}
   - component: {fileID: 6532924965108710091}
-  - component: {fileID: 2505129145334878060}
+  - component: {fileID: 4799130069206210701}
   m_Layer: 0
   m_Name: WindSlash
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 3383112826230574409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1628790111101987378}
   m_Father: {fileID: 0}
@@ -196,10 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4936036d76966f34695e35a99a4e4263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
   speed: 15
   lifetime: 0.5
---- !u!114 &2505129145334878060
+  userTag: Player
+  targetTag: Enemy
+  damage: 15
+--- !u!114 &4799130069206210701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,6 +210,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3383112826230574409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a137b06414df3a843b84873e3ba0bc83, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KnockBackForce: 5
+  KnockBackTime: 0.3

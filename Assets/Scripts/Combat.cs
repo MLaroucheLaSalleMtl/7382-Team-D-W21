@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    [SerializeField] float damage = 10f;
+    [SerializeField] private string targetTag;
+    [SerializeField] private float damage = 20f;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("Enemy"))
+        if(collider.gameObject.CompareTag(targetTag))
         {
             collider.SendMessage("ReceiveDamage", damage);
         }

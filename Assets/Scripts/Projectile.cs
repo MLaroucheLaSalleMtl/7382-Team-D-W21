@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    private Rigidbody2D rigid;
+    [SerializeField] private float speed;
+    [SerializeField] private float lifetime;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        rigid = GetComponent<Rigidbody2D>();
+        rigid.velocity = PlayerMovement.playerDirection * speed;
+        Destroy(gameObject, lifetime);
     }
 }
