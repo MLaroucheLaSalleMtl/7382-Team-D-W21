@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : Enemy
+public class EnemyAI : CombatEntity
 {
     public Rigidbody2D rigid;
     public float MoveSpeed;
@@ -12,10 +12,12 @@ public class EnemyAI : Enemy
     public Transform startPosition;
     private Animator animator;
 
+    private Vector3 direction;
+
     // Start is called before the first frame update
     void Start()
     {
-        currentState = EnemyState.idle;
+        currentState = State.idle;
         rigid = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
@@ -25,32 +27,37 @@ public class EnemyAI : Enemy
     void FixedUpdate()
     {
         CheckDistance();
+        StaggerTimer();
     }
 
     void CheckDistance()
     {
-
+        SetDirection();
         if (Vector3.Distance(target.position, transform.position) <= ChaseRange &&
             Vector3.Distance(target.position, transform.position) > attacRange)
         {
-            if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
+            if (currentState == State.idle || currentState == State.walk && currentState != State.stagger)
             {
-                rigid.isKinematic = false;
-                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
-                ChangeAnimation(temp - transform.position);
-                rigid.MovePosition(temp);
-                ChangeState(EnemyState.walk);
+                rigid.MovePosition(direction);
+                ChangeState(State.walk);
                 animator.SetBool("WakeUp", true);
+            //    animator.SetBool("walking", true);
+            //}
+            //else
+            //{
+            //    animator.SetBool("Walking", false);
             }
         }
-        else if(Vector3.Distance(target.position, transform.position) <= attacRange)
+        else if (Vector3.Distance(target.position, transform.position) <= attacRange)
         {
-            Attack();
+            if (currentState == State.idle || currentState == State.walk && currentState != State.stagger && currentState != State.attack)
+            {
+                StartCoroutine(Attack());
+            }
         }
         else if (animator.GetBool("WakeUp"))
         {
             animator.SetBool("WakeUp", false);
-            rigid.isKinematic = true;
         }
     }
 
@@ -86,13 +93,21 @@ public class EnemyAI : Enemy
         }
     }
 
-    private void Attack()
+    private void SetDirection()
     {
-        ChangeState(EnemyState.attack);
-        animator.SetBool("Attack", true);
+        direction = Vector3.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+        ChangeAnimation(direction - transform.position);
     }
 
-    private void ChangeState(EnemyState newstate)
+    private IEnumerator Attack()
+    {
+        ChangeState(State.attack);
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(1f);
+        ChangeState(State.idle);
+    }
+
+    private void ChangeState(State newstate)
     {
         if(currentState != newstate)
         {

@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2029948005
+  m_SortingLayer: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -6574309679305568536, guid: 3c422815c2375e8478874c92b04db429, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -197,10 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  lifetime: 0.5
-  userTag: Player
-  targetTag: Enemy
-  damage: 15
+  lifetime: 1
+  damage: 20
 --- !u!114 &4799130069206210701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +211,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnockBackForce: 5
-  KnockBackTime: 0.3
+  KnockBackForce: 15
+  KnockBackTime: 0.1

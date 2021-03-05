@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Player
 {
     private Rigidbody2D rigid;
     private Animator animator;
 
     private Vector2 movement;
-    [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private float movementSpeed = 500f;
 
     private bool attack = false;
     private float cooltime = 0f;
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool skill = false;
     [SerializeField] private GameObject[] skillList;
     private float skillcooltime = 0f;
+    private float mpCost = 20f;
 
     private bool skillSwitch = false;
     public int skillIndex = 0;
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack()
     {
-        if(attack && cooltime <= 0f)
+        if(attack && cooltime <= 0f && currentState != State.stagger)
         {
             cooltime = 0.3f;
             animator.SetBool("Attacking", true);
@@ -62,27 +63,44 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Animate()
+    {
+        if (currentState != State.stagger)
+        {
+            if (movement != Vector2.zero && cooltime <= 0f)
+            {
+                animator.SetFloat("X", movement.x);
+                animator.SetFloat("Y", movement.y);
+                animator.SetBool("Moving", true);
+                //rigid.MovePosition(rigid.position + movement * movementSpeed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                animator.SetBool("Moving", false);
+            }
+            Move();
+        }
+    }
+
     private void Move()
     {
-        if (movement != Vector2.zero && (cooltime <= 0f))
+        if (animator.GetBool("Moving"))
         {
-            animator.SetFloat("X", movement.x);
-            animator.SetFloat("Y", movement.y);
-            animator.SetBool("Moving", true);
-            rigid.MovePosition(rigid.position + movement * movementSpeed * Time.fixedDeltaTime);
+            rigid.velocity = movement.normalized * movementSpeed * Time.fixedDeltaTime;
         }
         else
         {
-            animator.SetBool("Moving", false);
+            rigid.velocity = Vector2.zero;
         }
     }
 
     private void Skill()
     {
-        if(skill && cooltime <= 0f && skillcooltime <= 0f)
+        if(skill && cooltime <= 0f && skillcooltime <= 0f && currentState != State.stagger && Mp >= mpCost)
         {
             cooltime = 0.3f;
             skillcooltime = 1f;
+            Mp -= 20f;
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
             Instantiate(skillList[skillIndex], transform.position, rotation);
@@ -117,14 +135,15 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Attack();
-        Move();
+        Animate();
         Skill();
         SkillSwitch();
         PlayerDirection();
-    }
 
-    private void LateUpdate()
-    {
+        HpRegen();
+        MpRegen();
+        StaggerTimer();
+
         if (cooltime > 0f) cooltime -= Time.deltaTime;
         if (skillcooltime > 0f) skillcooltime -= Time.deltaTime;
     }

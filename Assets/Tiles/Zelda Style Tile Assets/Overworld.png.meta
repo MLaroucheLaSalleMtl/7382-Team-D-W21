@@ -14,6 +14,36 @@ TextureImporter:
   - first:
       213: 751384457945762904
     second: Fountain 3
+  - first:
+      213: -6584341902077078680
+    second: Tree
+  - first:
+      213: 3559884070205965680
+    second: GrassyTombStone
+  - first:
+      213: 8526427973969523166
+    second: RightSideBenc
+  - first:
+      213: 786661062723731931
+    second: RightSideBen
+  - first:
+      213: -4357409853927495536
+    second: LeftSideBench
+  - first:
+      213: 51892817205249142
+    second: UpSideBench
+  - first:
+      213: -3760940450331062176
+    second: DownSideBench
+  - first:
+      213: -375774214369927839
+    second: BigRock
+  - first:
+      213: -3668950676714670224
+    second: SmallGuy
+  - first:
+      213: 1412988594821571083
+    second: SellingStand
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +145,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Overworld_0
+      name: MainGrass
       rect:
         serializedVersion: 2
         x: 0
@@ -4315,7 +4345,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_201
+      name: OneSmallRock
       rect:
         serializedVersion: 2
         x: 96
@@ -4898,27 +4928,6 @@ TextureImporter:
       bones: []
       spriteID: 357142f348e8730d0800000000000000
       internalID: -3443126691455297709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Overworld_229
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 480
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3979aeb268a9f63d0800000000000000
-      internalID: -3211178108238784621
       vertices: []
       indices: 
       edges: []
@@ -5717,48 +5726,6 @@ TextureImporter:
       bones: []
       spriteID: 28434f2d943d45d40800000000000000
       internalID: 5572310952989439106
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Overworld_269
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 464
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e93f9bae1fc6ff250800000000000000
-      internalID: 5980618616452281246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Overworld_270
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 464
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7651ec5b7d514d200800000000000000
-      internalID: 203811899350848871
       vertices: []
       indices: 
       edges: []
@@ -22139,6 +22106,237 @@ TextureImporter:
       bones: []
       spriteID: d2247047302f68140800000000000000
       internalID: 4721727355990000173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863d9f6ece7bf94a0800000000000000
+      internalID: -6584341902077078680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassyTombStone
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 464
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.50782204, y: 0.3749256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075c23663bf376130800000000000000
+      internalID: 3559884070205965680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightSideBench
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 448
+        width: 17
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61aff530c91f1b790800000000000000
+      internalID: -7515960650730833386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightSideBenc
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 448
+        width: 16
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1386f3115f35670800000000000000
+      internalID: 8526427973969523166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightSideBen
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 448
+        width: 16
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd187429118caea00800000000000000
+      internalID: 786661062723731931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeftSideBench
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 448
+        width: 16
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0986ddb03de5783c0800000000000000
+      internalID: -4357409853927495536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpSideBench
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 480
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 674c9e70e3c58b000800000000000000
+      internalID: 51892817205249142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownSideBench
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 448
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0609e9436947ecbc0800000000000000
+      internalID: -3760940450331062176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigRock
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 368
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d9abcc75bf8caf0800000000000000
+      internalID: -375774214369927839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallGuy
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 528
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0773ef76cc4451dc0800000000000000
+      internalID: -3668950676714670224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SellingStand
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 128
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.4918167, y: 0.19996722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02a40204a1fb9310800000000000000
+      internalID: 1412988594821571083
       vertices: []
       indices: 
       edges: []

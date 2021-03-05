@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WindSlash : Projectile
 {
-    [SerializeField] private float damage = 15f;
+    [SerializeField] private float damage = 20f;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Enemy"))
+        if (collider.gameObject.CompareTag("Enemy") || collider.gameObject.tag == "Boss")
         {
             collider.SendMessage("ReceiveDamage", damage);
         }

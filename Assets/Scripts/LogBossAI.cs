@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogBossAI : Enemy
+public class LogBossAI : CombatEntity
 {
-    [SerializeField] private Transform target;
+    private Transform target;
     private Animator animator;
 
     private Vector3 direction;
@@ -16,7 +16,7 @@ public class LogBossAI : Enemy
     private int fanCount = 5;
     private float fanSpread = 20f;
     private int barrageCount = 30;
-    [SerializeField] private int attackCounter = 5;
+    private int attackCounter = 3;
 
 
     private void FacePlayer()
@@ -70,7 +70,7 @@ public class LogBossAI : Enemy
     private IEnumerator BossSleep()
     {
         animator.SetBool("Sleeping", true);
-        attackCounter = 5;
+        attackCounter = 3;
         yield return new WaitForSeconds(5f);
         animator.SetBool("Sleeping", false);
     }
@@ -79,6 +79,7 @@ public class LogBossAI : Enemy
     void Start()
     {
         animator = GetComponent<Animator>();
+        target = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

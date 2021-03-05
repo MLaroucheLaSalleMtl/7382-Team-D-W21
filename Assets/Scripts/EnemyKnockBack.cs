@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class EnemyKnockBack : MonoBehaviour
 {
-    public float KnockBackForce = 5f;
-    public float KnockBackTime = 0.3f;
+    public float KnockBackForce = 10f;
+    public float KnockBackTime = 0.1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
-            if (enemy != null)
+            Rigidbody2D player = collision.GetComponent<Rigidbody2D>();
+            if (player != null)
             {
-                Vector2 difference = enemy.transform.position - transform.position;
+                player.GetComponent<CombatEntity>().currentState = State.stagger;
+                Vector2 difference = player.transform.position - transform.position;
                 difference = difference.normalized * KnockBackForce;
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(KnockTime(enemy));
+                player.AddForce(difference, ForceMode2D.Impulse);
+                StartCoroutine(KnockTime(player));
             }
         }
     }
 
-    private IEnumerator KnockTime(Rigidbody2D enemy)
+    private IEnumerator KnockTime(Rigidbody2D player)
     {
-        if (enemy != null)
+        if (player != null)
         {
             yield return new WaitForSeconds(KnockBackTime);
-            enemy.velocity = Vector2.zero;
+            player.velocity = Vector2.zero;
+            player.GetComponent<CombatEntity>().currentState = State.idle;
         }
     }
 }

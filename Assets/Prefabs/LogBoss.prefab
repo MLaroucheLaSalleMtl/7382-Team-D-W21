@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2099469480910792765}
   - component: {fileID: 2099469480910792764}
-  - component: {fileID: 2099469480910792767}
   - component: {fileID: 2099469480910792766}
+  - component: {fileID: 2099469480910792767}
   - component: {fileID: 2099469480910792736}
   - component: {fileID: 2099469480910792737}
+  - component: {fileID: 5889906757044702298}
   m_Layer: 0
   m_Name: LogBoss
   m_TagString: Enemy
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2029948005
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -5034061168752090764, guid: 13ecd6735a4491e4688c4253d007893f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -87,6 +88,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &2099469480910792766
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099469480910792763}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!95 &2099469480910792767
 Animator:
   serializedVersion: 3
@@ -106,27 +128,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &2099469480910792766
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099469480910792763}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!70 &2099469480910792736
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -157,9 +158,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 500
   currentState: 0
-  target: {fileID: 8234800572964161500, guid: 2687a7312906b5740bd6e5dc413e6f31, type: 3}
+  staggerTimer: 0.3
+  invincible: 0
   projectilePrefab: {fileID: 3383112826230574409, guid: 7689d7bf1b6a6fe48a7a296660e4787e, type: 3}
-  attackCounter: 5
+--- !u!114 &5889906757044702298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099469480910792763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d7faf5e45b70d44b7e717d11f9bb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortOnce: 1
 --- !u!1 &2099469482618451724
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,9 +186,9 @@ GameObject:
   - component: {fileID: 2099469482618451726}
   - component: {fileID: 2099469482618451760}
   - component: {fileID: 2099469482618451727}
-  - component: {fileID: 5378615362139359136}
+  - component: {fileID: 1782612577}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 20
---- !u!114 &5378615362139359136
+--- !u!114 &1782612577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
