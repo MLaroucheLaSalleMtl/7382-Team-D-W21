@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyKnockBack : MonoBehaviour
 {
-    public float KnockBackForce = 10f;
+    public float KnockBackForce = 15f;
     public float KnockBackTime = 0.1f;
 
     private void OnTriggerEnter2D(Collider2D collision)

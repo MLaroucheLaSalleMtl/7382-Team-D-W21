@@ -7,11 +7,16 @@ public class FireballExplosion : MonoBehaviour
     [SerializeField] private float damage = 20f;
     [SerializeField] private float lifetime = 1.5f;
 
+    [SerializeField] private string[] targetTags;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Enemy") || collider.gameObject.tag == "Boss")
+        if(collider != null)
         {
-            collider.SendMessage("ReceiveDamage", damage);
+            for(int i = 0; i < targetTags.Length; i++)
+            {
+                if(collider.gameObject.CompareTag(targetTags[i])) collider.SendMessage("ReceiveDamage", damage);
+            }
         }
     }
 

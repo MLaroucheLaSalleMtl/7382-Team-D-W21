@@ -80,12 +80,12 @@ public class LogBossAI : CombatEntity
     {
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
+        InvokeRepeating("FacePlayer", 0f, 0.1f);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        FacePlayer();
         if(!animator.GetBool("Sleeping")) attackCooltime -= Time.fixedDeltaTime;
         if (attackCooltime <= 0f)
         {

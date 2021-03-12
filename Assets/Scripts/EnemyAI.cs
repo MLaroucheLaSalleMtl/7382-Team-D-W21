@@ -41,11 +41,11 @@ public class EnemyAI : CombatEntity
                 rigid.MovePosition(direction);
                 ChangeState(State.walk);
                 animator.SetBool("WakeUp", true);
-            //    animator.SetBool("walking", true);
-            //}
-            //else
-            //{
-            //    animator.SetBool("Walking", false);
+                animator.SetBool("walking", true);
+            }
+            else
+            {
+                animator.SetBool("Walking", false);
             }
         }
         else if (Vector3.Distance(target.position, transform.position) <= attacRange)
