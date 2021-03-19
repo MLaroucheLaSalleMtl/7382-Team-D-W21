@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Rigidbody2D rigid;
-    [SerializeField] private float speed;
+    [SerializeField] private float damage;
     [SerializeField] private float lifetime;
+    [SerializeField] string[] targetsTag;
+
+    public float Damage { get => damage;}
+    public float Lifetime { get => lifetime; set => lifetime = value; }
+    public string[] TargetsTag { get => targetsTag;}
 
     // Start is called before the first frame update
     void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        rigid.velocity = PlayerMovement.playerDirection * speed;
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, Lifetime);
     }
 }

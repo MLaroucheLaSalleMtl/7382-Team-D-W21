@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 512068132440455252}
   - component: {fileID: -2592640008000572495}
   - component: {fileID: 89363080655522004}
-  - component: {fileID: -7067171221685907989}
+  - component: {fileID: -2730189207713442309}
   - component: {fileID: 757306941352552436}
   m_Layer: 0
   m_Name: EnemyWindSlash
@@ -184,7 +184,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-7067171221685907989
+--- !u!114 &-2730189207713442309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,12 +193,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3383112826230574409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8de293ba2b362654ab730c29a2f8ab5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4936036d76966f34695e35a99a4e4263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  damage: 20
   lifetime: 3
-  damage: 15
+  targetsTag:
+  - Player
 --- !u!114 &757306941352552436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3383112826230574409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd408fa7a4881a14ba428b26995d9065, type: 3}
+  m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnockBackForce: 15
-  KnockBackTime: 0.1
+  targetsTag:
+  - Player
+  KnockBackForce: 10
+  KnockBackTime: 0.3

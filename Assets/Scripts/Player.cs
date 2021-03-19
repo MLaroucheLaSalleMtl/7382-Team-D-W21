@@ -8,6 +8,8 @@ public class Player : CombatEntity
     [SerializeField] private float maxHp = 100f;
     [SerializeField] private float mp = 100f;
     [SerializeField] private float maxMp = 100f;
+    [SerializeField] private float hpRegen = 1f;
+    [SerializeField] private float mpRegen = 1f;
 
     public float Mp { get => mp; set => mp = value; }
     public float MaxMp { get => maxMp; set => maxMp = value; }
@@ -22,7 +24,7 @@ public class Player : CombatEntity
     {
         if(Hp < maxHp)
         {
-            Hp += 0.5f * Time.fixedDeltaTime;
+            Hp += hpRegen * Time.fixedDeltaTime;
         }
     }
 
@@ -30,14 +32,7 @@ public class Player : CombatEntity
     {
         if (mp < maxMp)
         {
-            mp += 0.5f * Time.fixedDeltaTime;
+            mp += mpRegen * Time.fixedDeltaTime;
         }
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 }

@@ -5,21 +5,30 @@ using UnityEngine;
 public class BossSummonFlameWall : MonoBehaviour
 {
     [SerializeField] private GameObject flameWallPrefab;
-    private Rigidbody2D rigid;
+    private Animator animator;
 
+    [SerializeField] private bool activated = false;
     private float wallSpeed = 20f;
 
-    private IEnumerator PushFlameWall()
+    public bool Activated { get => activated; set => activated = value; }
+
+    private IEnumerator SpawnFlameWall()
     {
+        Activated = false;
+        GameObject flameWall = Instantiate(flameWallPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D rigid = flameWall.GetComponent<Rigidbody2D>();
+        animator.SetTrigger("Activate");
         yield return new WaitForSeconds(3f);
         rigid.AddForce(Vector3.down * wallSpeed, ForceMode2D.Impulse);
     }
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Start()
     {
-        GameObject flameWall = Instantiate(flameWallPrefab, transform.position, Quaternion.identity);
-        rigid = flameWall.GetComponent<Rigidbody2D>();
-        StartCoroutine(PushFlameWall());
+        animator = GetComponent<Animator>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Activated) StartCoroutine(SpawnFlameWall());
     }
 }

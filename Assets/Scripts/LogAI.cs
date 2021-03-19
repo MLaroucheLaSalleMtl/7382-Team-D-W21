@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : CombatEntity
+public class LogAI : CombatEntity
 {
     public Rigidbody2D rigid;
     public float MoveSpeed;
@@ -13,11 +13,12 @@ public class EnemyAI : CombatEntity
     private Animator animator;
 
     private Vector3 direction;
+    private float attackCooldown = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = State.idle;
+        CurrentState = State.idle;
         rigid = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
@@ -27,7 +28,9 @@ public class EnemyAI : CombatEntity
     void FixedUpdate()
     {
         CheckDistance();
+
         StaggerTimer();
+        AttackTimer();
     }
 
     void CheckDistance()
@@ -36,7 +39,7 @@ public class EnemyAI : CombatEntity
         if (Vector3.Distance(target.position, transform.position) <= ChaseRange &&
             Vector3.Distance(target.position, transform.position) > attacRange)
         {
-            if (currentState == State.idle || currentState == State.walk && currentState != State.stagger)
+            if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger && attackCooldown <= 0f)
             {
                 rigid.MovePosition(direction);
                 ChangeState(State.walk);
@@ -50,9 +53,9 @@ public class EnemyAI : CombatEntity
         }
         else if (Vector3.Distance(target.position, transform.position) <= attacRange)
         {
-            if (currentState == State.idle || currentState == State.walk && currentState != State.stagger && currentState != State.attack)
+            if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger)
             {
-                StartCoroutine(Attack());
+                if (attackCooldown <= 0f) Attack();
             }
         }
         else if (animator.GetBool("WakeUp"))
@@ -69,9 +72,9 @@ public class EnemyAI : CombatEntity
 
     private void ChangeAnimation(Vector2 direction)
     {
-        if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            if(direction.x > 0)
+            if (direction.x > 0)
             {
                 SetAnimatorFloats(Vector2.right);
             }
@@ -80,7 +83,7 @@ public class EnemyAI : CombatEntity
                 SetAnimatorFloats(Vector2.left);
             }
         }
-        else if(Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
+        else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
         {
             if (direction.y > 0)
             {
@@ -92,6 +95,13 @@ public class EnemyAI : CombatEntity
             }
         }
     }
+    private void ChangeState(State newstate)
+    {
+        if (CurrentState != newstate)
+        {
+            CurrentState = newstate;
+        }
+    }
 
     private void SetDirection()
     {
@@ -99,19 +109,18 @@ public class EnemyAI : CombatEntity
         ChangeAnimation(direction - transform.position);
     }
 
-    private IEnumerator Attack()
+    private void AttackTimer()
     {
-        ChangeState(State.attack);
-        animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(1f);
-        ChangeState(State.idle);
+        if (attackCooldown >= 0f) attackCooldown -= Time.fixedDeltaTime;
+        if (attackCooldown <= 0f && animator.GetBool("Attacking"))
+        {
+            animator.SetBool("Attacking", false);
+        }
     }
 
-    private void ChangeState(State newstate)
+    private void Attack()
     {
-        if(currentState != newstate)
-        {
-            currentState = newstate;
-        }
+        animator.SetBool("Attacking", true);
+        attackCooldown = 2f;
     }
 }

@@ -9,12 +9,17 @@ public class Fireball : Projectile
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Enemy") || collider.gameObject.tag == "Boss")
+        for (int i = 0; i < TargetsTag.Length; i++)
         {
-            fireballPosition = GetComponent<Transform>();
-            Instantiate(explosionPrefab, fireballPosition.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (collider.gameObject.CompareTag(TargetsTag[i]))
+            {
+                fireballPosition = GetComponent<Transform>();
+                Instantiate(explosionPrefab, fireballPosition.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
-        else if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Projectile") Destroy(gameObject);
+
+        if (collider.gameObject.tag == "Terrain")
+            Destroy(gameObject);
     }
 }

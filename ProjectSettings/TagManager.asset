@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Projectile
   - Boss
+  - Terrain
+  - StrongProjectile
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - PlayerHitbox
-  - EnemyHitbox
+  - 
+  - 
   - 
   - 
   - 

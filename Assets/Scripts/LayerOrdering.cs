@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class LayerOrdering : MonoBehaviour
 {
-    private Renderer renderer;
+    private Renderer render;
     [SerializeField] private bool sortOnce = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<Renderer>();
+        render = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        renderer.sortingOrder = 1000 - (int)transform.position.y;
+        render.sortingOrder = 1000 - (int)transform.position.y;
         if (sortOnce) Destroy(this);
     }
 }

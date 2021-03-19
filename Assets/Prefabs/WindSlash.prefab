@@ -196,9 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4936036d76966f34695e35a99a4e4263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  lifetime: 1
   damage: 20
+  lifetime: 1
+  targetsTag:
+  - Enemy
+  - Boss
 --- !u!114 &4799130069206210701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,5 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetsTag:
+  - Enemy
   KnockBackForce: 15
   KnockBackTime: 0.1

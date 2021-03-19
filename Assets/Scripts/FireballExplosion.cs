@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class FireballExplosion : MonoBehaviour
 {
+    [SerializeField] private string[] targetTags;
     [SerializeField] private float damage = 20f;
     [SerializeField] private float lifetime = 1.5f;
-
-    [SerializeField] private string[] targetTags;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -25,5 +24,4 @@ public class FireballExplosion : MonoBehaviour
     {
         Destroy(gameObject, lifetime);
     }
-
 }

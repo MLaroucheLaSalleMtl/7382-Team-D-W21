@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1246985389799688091}
   - component: {fileID: 2103456934338922218}
   - component: {fileID: 2535587681828057681}
-  - component: {fileID: -471093162641246906}
   m_Layer: 0
   m_Name: MageEnemy
   m_TagString: Untagged
@@ -158,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   currentState: 0
+  starggerDuration: 0.3
   staggerTimer: 0.1
   invincible: 0
   rigid: {fileID: 0}
@@ -180,26 +180,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOnce: 1
---- !u!114 &-471093162641246906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8948488824060693063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ef04771b016f1643980ebe34632a407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  currentState: 0
-  staggerTimer: 0.1
-  invincible: 0
-  rigid: {fileID: 0}
-  MoveSpeed: 3
-  target: {fileID: 0}
-  ChaseRange: 10
-  attacRange: 6
-  startPosition: {fileID: 0}
-  projectilePrefab: {fileID: 5585281115346401277, guid: b586206e899da08449ec6699a2601562, type: 3}

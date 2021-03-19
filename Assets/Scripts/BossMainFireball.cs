@@ -2,32 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMainFireball : MonoBehaviour
+public class BossMainFireball : Projectile
 {
-    private float lifetime = 0.5f;
     private int splitCount = 6;
     private float splitAngle = 60f;
-    private float splitSpeed = 6f;
+    private float splitSpeed = 8f;
 
-    private Transform fireballPosition;
     [SerializeField] private GameObject fireballPrefab;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag != "Enemy" && collider.gameObject.tag != "Projectile" && collider.gameObject.tag != "Boss")
+        for (int i = 0; i < TargetsTag.Length; i++)
         {
-            fireballPosition = GetComponent<Transform>();
-            Instantiate(fireballPrefab, fireballPosition.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (collider.gameObject.CompareTag(TargetsTag[i]))
+            {
+                Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
+
+        if (collider.gameObject.tag == "Terrain")
+            Destroy(gameObject);
     }
-    private void FixedUpdate()
+
+    private void FireballSplit()
     {
-        lifetime -= Time.fixedDeltaTime;
-        if (lifetime <= 0f)
-        {
-            fireballPosition = GetComponent<Transform>();
-            Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+        Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
             for(int i = 0; i < splitCount; i++)
             {
                 GameObject fireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
@@ -36,6 +36,19 @@ public class BossMainFireball : MonoBehaviour
                 direction = Quaternion.AngleAxis(splitAngle, Vector3.forward) * direction;
             }
             Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        
+    }
+
+    private void FixedUpdate()
+    {
+        Lifetime -= Time.fixedDeltaTime;
+        if (Lifetime <= 0f)
+        {
+            FireballSplit();
         }
     }
 }

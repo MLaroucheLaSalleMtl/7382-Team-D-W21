@@ -154,6 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7259ee255dbea4191673823584be55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  damage: 0
   lifetime: 1
+  targetsTag:
+  - Enemy
+  - Boss
   explosionPrefab: {fileID: 5761371979614453917, guid: 6c54a6bb75151544f8a2d0923bce5e62, type: 3}

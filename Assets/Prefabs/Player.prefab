@@ -128,12 +128,11 @@ GameObject:
   - component: {fileID: 8234800572612734063}
   - component: {fileID: 8234800572612734061}
   - component: {fileID: 8234800572612734062}
-  - component: {fileID: 5825180916548711129}
   - component: {fileID: 3668737543255131598}
   - component: {fileID: 235444755013693578}
   m_Layer: 0
   m_Name: Up Hitbox
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,20 +228,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5825180916548711129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234800572612734056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
-  damage: 10
 --- !u!114 &3668737543255131598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetsTag:
+  - Enemy
   KnockBackForce: 5
   KnockBackTime: 0.3
 --- !u!114 &235444755013693578
@@ -269,7 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Boss
+  targetsTag:
+  - Enemy
+  - Boss
   damage: 10
 --- !u!1 &8234800572964161501
 GameObject:
@@ -285,7 +274,7 @@ GameObject:
   - component: {fileID: 8234800572964161488}
   - component: {fileID: 8234800572964161490}
   - component: {fileID: 8234800572964161494}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -409,16 +398,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  currentState: 0
-  staggerTimer: 0.2
-  invincible: 0
   maxHp: 100
   mp: 100
   maxMp: 100
+  hpRegen: 1
+  mpRegen: 1
   movementSpeed: 400
   skillList:
   - {fileID: 5585281115346401277, guid: b586206e899da08449ec6699a2601562, type: 3}
   - {fileID: 3383112826230574409, guid: 20496f8e943041245b3bcc3898abce37, type: 3}
+  - {fileID: 5857186492107179359, guid: 25678a1f5235175418da6a6b7523c994, type: 3}
+  - {fileID: 5287165032721807882, guid: e653ddd550b886e4abe9d3805d6ad720, type: 3}
+  fireballMpCost: 20
+  fireballSpeed: 10
+  razorLeafMpCost: 10
+  razorLeafSpeed: 15
+  earthShieldMpCost: 30
+  earthShieldCount: 3
+  healMpCost: 50
+  healAmount: 50
   skillIndex: 0
 --- !u!95 &8234800572964161494
 Animator:
@@ -450,12 +448,11 @@ GameObject:
   - component: {fileID: 8234800573728943163}
   - component: {fileID: 8234800573728943161}
   - component: {fileID: 8234800573728943162}
-  - component: {fileID: 3286365835151785456}
   - component: {fileID: 185958694679197223}
   - component: {fileID: 5831448666077328031}
   m_Layer: 0
   m_Name: Left Hitbox
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,20 +548,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3286365835151785456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234800573728943172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
-  damage: 10
 --- !u!114 &185958694679197223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetsTag:
+  - Enemy
   KnockBackForce: 5
   KnockBackTime: 0.3
 --- !u!114 &5831448666077328031
@@ -591,7 +576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Boss
+  targetsTag:
+  - Enemy
+  - Boss
   damage: 10
 --- !u!1 &8234800573915623422
 GameObject:
@@ -604,12 +591,11 @@ GameObject:
   - component: {fileID: 8234800573915623421}
   - component: {fileID: 8234800573915623411}
   - component: {fileID: 8234800573915623420}
-  - component: {fileID: 2125831041659119508}
   - component: {fileID: 6019283713221409827}
   - component: {fileID: 3451070476232271671}
   m_Layer: 0
   m_Name: Down Hitbox
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,20 +691,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2125831041659119508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234800573915623422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
-  damage: 10
 --- !u!114 &6019283713221409827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetsTag:
+  - Enemy
   KnockBackForce: 5
   KnockBackTime: 0.3
 --- !u!114 &3451070476232271671
@@ -745,7 +719,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Boss
+  targetsTag:
+  - Enemy
+  - Boss
   damage: 10
 --- !u!1 &8234800573965556133
 GameObject:
@@ -758,12 +734,11 @@ GameObject:
   - component: {fileID: 8234800573965556132}
   - component: {fileID: 8234800573965556122}
   - component: {fileID: 8234800573965556123}
-  - component: {fileID: 8234800573965556121}
   - component: {fileID: 2534185628577688242}
   - component: {fileID: 1363157281571834856}
   m_Layer: 0
   m_Name: Right Hitbox
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -859,20 +834,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8234800573965556121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234800573965556133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
-  damage: 10
 --- !u!114 &2534185628577688242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,6 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8b2c2fc039b1f4498508ccda5316e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetsTag:
+  - Enemy
   KnockBackForce: 5
   KnockBackTime: 0.3
 --- !u!114 &1363157281571834856
@@ -899,5 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc76a0151e16ab346a7a455100ed1b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Boss
+  targetsTag:
+  - Enemy
+  - Boss
   damage: 10

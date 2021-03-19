@@ -151,8 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5585281115346401277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8812ddd247cdfa42b696a0149b802e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b7259ee255dbea4191673823584be55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1
+  damage: 0
+  lifetime: 2
+  targetsTag:
+  - Player
+  - Terrain
   explosionPrefab: {fileID: 5761371979614453917, guid: 78f5e1c156eb8894db4972748962811e, type: 3}

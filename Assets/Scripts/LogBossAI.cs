@@ -9,14 +9,20 @@ public class LogBossAI : CombatEntity
 
     private Vector3 direction;
     private Vector3 skillDirection;
-    private float attackCooltime = 2f;
-
-    [SerializeField] private GameObject projectilePrefab;
-    private int fanBarrage = 5;
-    private int fanCount = 5;
-    private float fanSpread = 20f;
-    private int barrageCount = 30;
+    private float attackCooltime = 5f;
     private int attackCounter = 3;
+
+    [SerializeField] private GameObject leafPrefab;
+    private int fanBarrage = 3;
+    private int fanBarrageCount = 3;
+    private int fanCount = 5;
+    private float fanSpread = 30f;
+
+    private int barrageCount = 30;
+
+    [SerializeField] private GameObject whirlwindPrefab;
+    private int whirlwindCount = 3;
+    private int whirlwindLeafCount = 10;
 
 
     private void FacePlayer()
@@ -26,43 +32,53 @@ public class LogBossAI : CombatEntity
         animator.SetFloat("Y", direction.y);
     }
 
-    private void LeafFan()
+    private IEnumerator LeafFan()
     {
         attackCooltime = 5f;
-        StartCoroutine(Fan());
-    }
-
-    private IEnumerator Fan()
-    {
         for (int i = 0; i < fanBarrage; i++)
         {
-            skillDirection = Quaternion.AngleAxis(-(fanSpread * ((float)fanCount - 1f) / 2), Vector3.forward) * direction;
-            for (int j = 0; j < fanCount; j++)
+            for (int j = 0; j < fanBarrageCount; j++)
             {
-                GameObject missile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                Rigidbody2D rigid = missile.GetComponent<Rigidbody2D>();
-                rigid.AddForce(skillDirection.normalized * 8f, ForceMode2D.Impulse);
-                skillDirection = Quaternion.AngleAxis(fanSpread, Vector3.forward) * skillDirection;
+                skillDirection = Quaternion.AngleAxis(-(fanSpread * ((float)fanCount - 1f) / 2), Vector3.forward) * direction;
+                for (int k = 0; k < fanCount; k++)
+                {
+                    GameObject missile = Instantiate(leafPrefab, transform.position, Quaternion.identity);
+                    Rigidbody2D rigid = missile.GetComponent<Rigidbody2D>();
+                    rigid.AddForce(skillDirection.normalized * 8f, ForceMode2D.Impulse);
+                    skillDirection = Quaternion.AngleAxis(fanSpread, Vector3.forward) * skillDirection;
+                }
+                yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.75f);
         }
         attackCounter--;
     }
 
-    private void LeafBarrage()
+    private IEnumerator LeafBarrage()
     {
         attackCooltime = 5f;
-        StartCoroutine(Barrage());
-    }
-
-    private IEnumerator Barrage()
-    {
         for (int i = 0; i < barrageCount; i++)
         {
-            GameObject missile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            GameObject missile = Instantiate(leafPrefab, transform.position, Quaternion.identity);
             Rigidbody2D rigid = missile.GetComponent<Rigidbody2D>();
             rigid.AddForce(direction.normalized * 12f, ForceMode2D.Impulse);
             yield return new WaitForSeconds(0.1f);
+        }
+        attackCounter--;
+    }
+
+    private IEnumerator LeafWhirlwind()
+    {
+        attackCooltime = 8f;
+        for (int i = 0; i < whirlwindCount; i++)
+        {
+            for(int j = 0; j < whirlwindLeafCount; j++)
+            {
+                GameObject leaf = Instantiate(whirlwindPrefab, transform.position, Quaternion.identity);
+                Orbit script = leaf.GetComponent<Orbit>();
+                script.Angle = 360f * 0.1f * j;
+            }
+            yield return new WaitForSeconds(1.5f);
         }
         attackCounter--;
     }
@@ -73,14 +89,16 @@ public class LogBossAI : CombatEntity
         attackCounter = 3;
         yield return new WaitForSeconds(5f);
         animator.SetBool("Sleeping", false);
+        attackCooltime = 5f;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.SetBool("Sleeping", false);
         target = GameObject.FindWithTag("Player").transform;
-        InvokeRepeating("FacePlayer", 0f, 0.1f);
+        InvokeRepeating("FacePlayer", 0f, 0.2f);
     }
 
     // Update is called once per frame
@@ -89,14 +107,17 @@ public class LogBossAI : CombatEntity
         if(!animator.GetBool("Sleeping")) attackCooltime -= Time.fixedDeltaTime;
         if (attackCooltime <= 0f)
         {
-            int attack = Random.Range(1, 3);
+            int attack = Random.Range(3, 4);
             switch(attack)
             {
                 case 1:
-                    LeafFan();
+                    StartCoroutine(LeafFan());
                     break;
                 case 2:
-                    LeafBarrage();
+                    StartCoroutine(LeafBarrage());
+                    break;
+                case 3:
+                    StartCoroutine(LeafWhirlwind());
                     break;
             }
         }

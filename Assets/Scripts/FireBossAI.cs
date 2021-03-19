@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBossAI : CombatEntity
@@ -12,9 +11,11 @@ public class FireBossAI : CombatEntity
     private float attackCooltime = 5f;
 
     [SerializeField] private GameObject projectilePrefab;
-    private float fireballSpeed = 8f;
+    private float fireballSpeed = 12f;
 
     [SerializeField] private GameObject[] flameWallPrefab;
+    private int flameWallIndex;
+
 
     private void FacePlayer()
     {
@@ -31,13 +32,22 @@ public class FireBossAI : CombatEntity
         rigid.AddForce(direction.normalized * fireballSpeed, ForceMode2D.Impulse);
     }
 
-    private void FlameWall()
+    private IEnumerator FlameWall()
     {
-        attackCooltime = 15f;
-
+        attackCooltime = 10f;
+        flameWallIndex = Random.Range(0, 3);
+        for(int i = 0; i < flameWallPrefab.Length; i++)
+        {
+            if (flameWallIndex >= flameWallPrefab.Length)
+            {
+                flameWallIndex = 0;
+            }
+            BossSummonFlameWall flameWall = flameWallPrefab[flameWallIndex].GetComponent<BossSummonFlameWall>();
+            flameWall.Activated = true;
+            flameWallIndex += 1;
+            yield return new WaitForSeconds(1f);
+        }
     }
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -53,14 +63,14 @@ public class FireBossAI : CombatEntity
         attackCooltime -= Time.fixedDeltaTime;
         if (attackCooltime <= 0f)
         {
-            int attack = Random.Range(2, 3);
+            int attack = Random.Range(1, 3);
             switch (attack)
             {
                 case 1:
                     Fireball();
                     break;
                 case 2:
-                    FlameWall();
+                    StartCoroutine(FlameWall());
                     break;
             }
         }

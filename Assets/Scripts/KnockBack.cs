@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class KnockBack : MonoBehaviour
 {
-    public float KnockBackForce = 5f;
+    public string[] targetsTag;
+    public float KnockBackForce = 10f;
     public float KnockBackTime = 0.3f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        for (int i = 0; i < targetsTag.Length; i++)
         {
-            Rigidbody2D enemy = collision.GetComponent<Rigidbody2D>();
-            if (enemy != null)
+            if (collision.gameObject.CompareTag(targetsTag[i]))
             {
-                enemy.GetComponent<CombatEntity>().currentState = State.stagger;
-                Vector2 difference = enemy.transform.position - transform.position;
-                difference = difference.normalized * KnockBackForce;
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(KnockTime(enemy));
+                Rigidbody2D target = collision.GetComponent<Rigidbody2D>();
+                if (target != null)
+                {
+                    target.GetComponent<CombatEntity>().CurrentState = State.stagger;
+                    Vector2 difference = target.transform.position - transform.position;
+                    difference = difference.normalized * KnockBackForce;
+                    target.AddForce(difference, ForceMode2D.Impulse);
+                    //StartCoroutine(KnockTime(target));
+                }
             }
         }
     }
 
-    private IEnumerator KnockTime(Rigidbody2D enemy)
+    private IEnumerator KnockTime(Rigidbody2D target)
     {
-        if (enemy != null)
+        if (target != null)
         {
             yield return new WaitForSeconds(KnockBackTime);
-            enemy.velocity = Vector2.zero;
-            enemy.GetComponent<CombatEntity>().currentState = State.idle;
+            target.velocity = Vector2.zero;
+            target.GetComponent<CombatEntity>().CurrentState = State.idle;
         }
     }
 }

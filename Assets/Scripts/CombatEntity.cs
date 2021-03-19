@@ -4,23 +4,25 @@ using UnityEngine;
 
 public enum State
 {
-    idle, walk, attack, stagger, sleeping
+    idle, walk, attack, stagger
 }
 
 public class CombatEntity : MonoBehaviour
 {
     [SerializeField] private float hp;
-    public State currentState;
-    public float staggerTimer = 0.1f;
-    public bool invincible = false;
+    private State currentState;
+    private float starggerDuration = 0.3f;
+    private float staggerTimer = 0.3f;
+    private bool invincible = false;
 
     public float Hp { get => hp; set => hp = value; }
+    public State CurrentState { get => currentState; set => currentState = value; }
 
     public virtual void ReceiveDamage(float damage)
     {
         if (!invincible)
         {
-            Hp -= damage;
+            hp -= damage;
             invincible = true;
             if (IsDead())
             {
@@ -48,14 +50,14 @@ public class CombatEntity : MonoBehaviour
 
     public void StaggerTimer()
     {
-        if(currentState == State.stagger)
+        if(CurrentState == State.stagger)
         {
-            staggerTimer -= 0.1f * Time.fixedDeltaTime;
+            staggerTimer -= 0.3f * Time.fixedDeltaTime;
         }
         if(staggerTimer <= 0f)
         {
-            currentState = State.idle;
-            staggerTimer = 0.3f;
+            CurrentState = State.idle;
+            staggerTimer = starggerDuration;
         }
     }
 }

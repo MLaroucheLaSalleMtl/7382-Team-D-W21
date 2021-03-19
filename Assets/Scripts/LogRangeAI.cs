@@ -11,14 +11,14 @@ public class LogRangeAI : CombatEntity
     public float attacRange = 6f;
     public Transform startPosition;
     private Animator animator;
-    private Vector3 direction;
 
+    private Vector3 direction;
     [SerializeField] private GameObject projectilePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = State.idle;
+        CurrentState = State.idle;
         rigid = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
@@ -37,7 +37,7 @@ public class LogRangeAI : CombatEntity
         if (Vector3.Distance(target.position, transform.position) <= ChaseRange &&
             Vector3.Distance(target.position, transform.position) > attacRange)
         {
-            if (currentState == State.idle || currentState == State.walk && currentState != State.stagger)
+            if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger)
             {
                 rigid.MovePosition(direction);
                 ChangeState(State.walk);
@@ -46,7 +46,7 @@ public class LogRangeAI : CombatEntity
         }
         else if (Vector3.Distance(target.position, transform.position) <= attacRange)
         {
-            if (currentState == State.idle || currentState == State.walk && currentState != State.stagger && currentState != State.attack)
+            if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger && CurrentState != State.attack)
             {
                 StartCoroutine(RangeAttack());
             }
@@ -110,9 +110,9 @@ public class LogRangeAI : CombatEntity
 
     private void ChangeState(State newstate)
     {
-        if (currentState != newstate)
+        if (CurrentState != newstate)
         {
-            currentState = newstate;
+            CurrentState = newstate;
         }
     }
 }

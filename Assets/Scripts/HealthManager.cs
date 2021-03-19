@@ -9,12 +9,6 @@ public class HealthManager : MonoBehaviour
     public Image healthbar;
     public Image manaBar;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
     public void UpdateHealth()
     {
         healthbar.fillAmount = player.Hp / player.MaxHp;

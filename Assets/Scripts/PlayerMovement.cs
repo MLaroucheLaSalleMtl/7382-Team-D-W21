@@ -17,12 +17,25 @@ public class PlayerMovement : Player
     private bool skill = false;
     [SerializeField] private GameObject[] skillList;
     private float skillcooltime = 0f;
-    private float mpCost = 20f;
+    private Vector3 playerDirection;
+
+    [SerializeField] private float fireballMpCost = 20f;
+    [SerializeField] private float fireballSpeed = 10f;
+
+    [SerializeField] private float razorLeafMpCost = 10f;
+    [SerializeField] private float razorLeafSpeed = 15f;
+
+    [SerializeField] private float earthShieldMpCost = 30f;
+    [SerializeField] private int earthShieldCount = 3;
+
+    [SerializeField] private float healMpCost = 50f;
+    [SerializeField] private float healAmount = 50f;
 
     private bool skillSwitch = false;
-    public int skillIndex = 0;
+    private int skillIndex = 0;
 
-    public static Vector3 playerDirection;
+    public bool SkillSwitch { get => skillSwitch; set => skillSwitch = value; }
+    public int SkillIndex { get => skillIndex; set => skillIndex = value; }
 
     void Start()
     {
@@ -47,12 +60,12 @@ public class PlayerMovement : Player
 
     public void OnSkillSwitch(InputAction.CallbackContext context)
     {
-        skillSwitch = context.performed;
+        SkillSwitch = context.performed;
     }
 
     private void Attack()
     {
-        if(attack && cooltime <= 0f && currentState != State.stagger)
+        if(attack && cooltime <= 0f && CurrentState != State.stagger)
         {
             cooltime = 0.3f;
             animator.SetBool("Attacking", true);
@@ -65,7 +78,7 @@ public class PlayerMovement : Player
 
     private void Animate()
     {
-        if (currentState != State.stagger)
+        if (CurrentState != State.stagger)
         {
             if (movement != Vector2.zero && cooltime <= 0f)
             {
@@ -96,29 +109,96 @@ public class PlayerMovement : Player
 
     private void Skill()
     {
-        if(skill && cooltime <= 0f && skillcooltime <= 0f && currentState != State.stagger && Mp >= mpCost)
+        if(skill && cooltime <= 0f && skillcooltime <= 0f && CurrentState != State.stagger)
         {
-            cooltime = 0.3f;
-            skillcooltime = 1f;
-            Mp -= 20f;
-            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-            Instantiate(skillList[skillIndex], transform.position, rotation);
+            switch(SkillIndex)
+            {
+                case 0:
+                    Fireball();
+                    break;
+                case 1:
+                    RazorLeaf();
+                    break;
+                case 2:
+                    EarthShield();
+                    break;
+                case 3:
+                    Heal();
+                    break;
+            }
         }
     }
 
-    private void SkillSwitch()
+    private void Fireball()
     {
-        if (skillSwitch)
+        if (Mp >= fireballMpCost)
         {
-            skillSwitch = false;
-            if (skillIndex + 1 < skillList.Length)
+            cooltime = 0.3f;
+            skillcooltime = 1f;
+            Mp -= fireballMpCost;
+            GameObject fireball = Instantiate(skillList[SkillIndex], transform.position, Quaternion.identity);
+            Rigidbody2D rigid = fireball.GetComponent<Rigidbody2D>();
+            rigid.AddForce(playerDirection.normalized * fireballSpeed, ForceMode2D.Impulse);
+        }
+    }
+
+    private void RazorLeaf()
+    {
+        if (Mp >= razorLeafMpCost)
+        {
+            cooltime = 0.3f;
+            skillcooltime = 1f;
+            Mp -= razorLeafMpCost;
+            //float angle1 = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+            //Quaternion rotation1 = Quaternion.Euler(0f, 0f, angle1);
+            GameObject razorLeaf = Instantiate(skillList[SkillIndex], transform.position, Quaternion.identity);
+            Rigidbody2D rigid = razorLeaf.GetComponent<Rigidbody2D>();
+            rigid.AddForce(playerDirection.normalized * razorLeafSpeed, ForceMode2D.Impulse);
+        }
+    }
+
+    private void EarthShield()
+    {
+        if(Mp >= earthShieldMpCost)
+        {
+            cooltime = 0.3f;
+            skillcooltime = 5f;
+            Mp -= earthShieldMpCost;
+            for (int i = 0; i < earthShieldCount; i++)
             {
-                skillIndex++;
+                GameObject shield = Instantiate(skillList[SkillIndex], transform.position, Quaternion.identity);
+                Orbit script = shield.GetComponent<Orbit>();
+                script.Angle = 360f * 0.333f * i;
+            }
+        }
+    }
+
+    private void Heal()
+    {
+        if(Mp >= healMpCost && Hp <= 100f)
+        {
+            cooltime = 0.3f;
+            skillcooltime = 0.5f;
+            Mp -= healMpCost;
+            Hp += healAmount;
+            GameObject heal = Instantiate(skillList[SkillIndex], transform.position, Quaternion.identity);
+            Heal script = heal.GetComponent<Heal>();
+            script.UserTag = "Player";
+        }
+    }
+
+    private void ChangeSkill()
+    {
+        if (SkillSwitch)
+        {
+            SkillSwitch = false;
+            if (SkillIndex + 1 < skillList.Length)
+            {
+                SkillIndex++;
             }
             else
             {
-                skillIndex = 0;
+                SkillIndex = 0;
             }
         }
     }
@@ -137,10 +217,10 @@ public class PlayerMovement : Player
         Attack();
         Animate();
         Skill();
-        SkillSwitch();
+        ChangeSkill();
         PlayerDirection();
 
-        HpRegen();
+        //HpRegen();
         MpRegen();
         StaggerTimer();
 
