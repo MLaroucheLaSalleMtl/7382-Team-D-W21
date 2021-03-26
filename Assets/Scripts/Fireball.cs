@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Fireball : Projectile
 {
-    private Transform fireballPosition;
     [SerializeField] private GameObject explosionPrefab;
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -13,8 +12,7 @@ public class Fireball : Projectile
         {
             if (collider.gameObject.CompareTag(TargetsTag[i]))
             {
-                fireballPosition = GetComponent<Transform>();
-                Instantiate(explosionPrefab, fireballPosition.position, Quaternion.identity);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

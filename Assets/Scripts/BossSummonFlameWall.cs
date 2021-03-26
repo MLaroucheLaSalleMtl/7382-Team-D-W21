@@ -8,7 +8,7 @@ public class BossSummonFlameWall : MonoBehaviour
     private Animator animator;
 
     [SerializeField] private bool activated = false;
-    private float wallSpeed = 20f;
+    [SerializeField] private float wallSpeed = 50f;
 
     public bool Activated { get => activated; set => activated = value; }
 
@@ -18,7 +18,7 @@ public class BossSummonFlameWall : MonoBehaviour
         GameObject flameWall = Instantiate(flameWallPrefab, transform.position, Quaternion.identity);
         Rigidbody2D rigid = flameWall.GetComponent<Rigidbody2D>();
         animator.SetTrigger("Activate");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         rigid.AddForce(Vector3.down * wallSpeed, ForceMode2D.Impulse);
     }
 

@@ -17,13 +17,14 @@ public class CombatEntity : MonoBehaviour
 
     public float Hp { get => hp; set => hp = value; }
     public State CurrentState { get => currentState; set => currentState = value; }
+    public bool Invincible { get => invincible; set => invincible = value; }
 
     public virtual void ReceiveDamage(float damage)
     {
-        if (!invincible)
+        if (!Invincible)
         {
             hp -= damage;
-            invincible = true;
+            Invincible = true;
             if (IsDead())
             {
                 Die();
@@ -35,7 +36,7 @@ public class CombatEntity : MonoBehaviour
     public IEnumerator InvincibilityTimer()
     {
         yield return new WaitForSeconds(0.3f);
-        invincible = false;
+        Invincible = false;
     }
 
     public bool IsDead()

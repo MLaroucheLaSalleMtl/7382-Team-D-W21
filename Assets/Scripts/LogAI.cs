@@ -13,7 +13,7 @@ public class LogAI : CombatEntity
     private Animator animator;
 
     private Vector3 direction;
-    private float attackCooldown = 2f;
+    private float attackCooldown = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +39,13 @@ public class LogAI : CombatEntity
         if (Vector3.Distance(target.position, transform.position) <= ChaseRange &&
             Vector3.Distance(target.position, transform.position) > attacRange)
         {
+            animator.SetBool("WakeUp", true);
+
             if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger && attackCooldown <= 0f)
             {
                 rigid.MovePosition(direction);
                 ChangeState(State.walk);
-                animator.SetBool("WakeUp", true);
-                animator.SetBool("walking", true);
+                animator.SetBool("Walking", true);
             }
             else
             {
@@ -53,6 +54,7 @@ public class LogAI : CombatEntity
         }
         else if (Vector3.Distance(target.position, transform.position) <= attacRange)
         {
+            animator.SetBool("Walking", false);
             if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger)
             {
                 if (attackCooldown <= 0f) Attack();
@@ -61,6 +63,8 @@ public class LogAI : CombatEntity
         else if (animator.GetBool("WakeUp"))
         {
             animator.SetBool("WakeUp", false);
+            ChangeState(State.idle);
+            attackCooldown = 1f;
         }
     }
 
@@ -111,16 +115,12 @@ public class LogAI : CombatEntity
 
     private void AttackTimer()
     {
-        if (attackCooldown >= 0f) attackCooldown -= Time.fixedDeltaTime;
-        if (attackCooldown <= 0f && animator.GetBool("Attacking"))
-        {
-            animator.SetBool("Attacking", false);
-        }
+        if (attackCooldown >= 0f && animator.GetBool("WakeUp")) attackCooldown -= Time.fixedDeltaTime;
     }
 
     private void Attack()
     {
-        animator.SetBool("Attacking", true);
+        animator.SetTrigger("Attack");
         attackCooldown = 2f;
     }
 }

@@ -158,4 +158,5 @@ MonoBehaviour:
   lifetime: 0.5
   targetsTag:
   - Player
+  explosionPrefab: {fileID: 5761371979614453917, guid: 78f5e1c156eb8894db4972748962811e, type: 3}
   fireballPrefab: {fileID: 5585281115346401277, guid: ea9093c021a7e3a43aeed5b4ce3015a0, type: 3}

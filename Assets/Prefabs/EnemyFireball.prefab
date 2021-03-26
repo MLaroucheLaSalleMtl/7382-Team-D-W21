@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  lifetime: 2
+  lifetime: 1
   targetsTag:
   - Player
   - Terrain

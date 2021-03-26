@@ -6,8 +6,9 @@ public class BossMainFireball : Projectile
 {
     private int splitCount = 6;
     private float splitAngle = 60f;
-    private float splitSpeed = 8f;
+    private float splitSpeed = 10f;
 
+    [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private GameObject fireballPrefab;
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -16,7 +17,7 @@ public class BossMainFireball : Projectile
         {
             if (collider.gameObject.CompareTag(TargetsTag[i]))
             {
-                Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

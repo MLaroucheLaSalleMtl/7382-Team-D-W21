@@ -79,7 +79,7 @@ TextureImporter:
     second: objects_24
   - first:
       213: 8753186556605219898
-    second: objects_25
+    second: PauseMenu
   - first:
       213: -8841936248928892492
     second: objects_26
@@ -148,7 +148,7 @@ TextureImporter:
     second: objects_47
   - first:
       213: -6429866276832845431
-    second: objects_48
+    second: HealingPlate
   - first:
       213: 3482744526424367930
     second: objects_49
@@ -1690,48 +1690,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_25
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a34cd2ffbc0997970800000000000000
-      internalID: 8753186556605219898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_26
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b981f304d12b4580800000000000000
-      internalID: -8841936248928892492
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: objects_27
       rect:
         serializedVersion: 2
@@ -2152,13 +2110,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_48
+      name: HealingPlate
       rect:
         serializedVersion: 2
         x: 416
         y: 288
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2168,27 +2126,6 @@ TextureImporter:
       bones: []
       spriteID: 9816d1820b684c6a0800000000000000
       internalID: -6429866276832845431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: objects_49
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 288
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a33e5f4c1b1355030800000000000000
-      internalID: 3482744526424367930
       vertices: []
       indices: 
       edges: []
@@ -7082,6 +7019,27 @@ TextureImporter:
       bones: []
       spriteID: 3e5dc917a523de100800000000000000
       internalID: 138822527552902627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a34cd2ffbc0997970800000000000000
+      internalID: 8753186556605219898
       vertices: []
       indices: 
       edges: []

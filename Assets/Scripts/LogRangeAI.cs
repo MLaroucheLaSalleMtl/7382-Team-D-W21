@@ -13,6 +13,7 @@ public class LogRangeAI : CombatEntity
     private Animator animator;
 
     private Vector3 direction;
+    private float attackCooldown = 1f;
     [SerializeField] private GameObject projectilePrefab;
 
     // Start is called before the first frame update
@@ -28,7 +29,9 @@ public class LogRangeAI : CombatEntity
     void FixedUpdate()
     {
         CheckDistance();
+
         StaggerTimer();
+        AttackTimer();
     }
 
     void CheckDistance()
@@ -37,23 +40,26 @@ public class LogRangeAI : CombatEntity
         if (Vector3.Distance(target.position, transform.position) <= ChaseRange &&
             Vector3.Distance(target.position, transform.position) > attacRange)
         {
-            if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger)
+            animator.SetBool("WakeUp", true);
+
+            if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger && attackCooldown <= 0f)
             {
                 rigid.MovePosition(direction);
                 ChangeState(State.walk);
-                animator.SetBool("WakeUp", true);
             }
         }
         else if (Vector3.Distance(target.position, transform.position) <= attacRange)
         {
             if (CurrentState == State.idle || CurrentState == State.walk && CurrentState != State.stagger && CurrentState != State.attack)
             {
-                StartCoroutine(RangeAttack());
+                if (attackCooldown <= 0f) StartCoroutine(RangeAttack());
             }
         }
         else if (animator.GetBool("WakeUp"))
         {
             animator.SetBool("WakeUp", false);
+            ChangeState(State.idle);
+            attackCooldown = 1f;
         }
     }
 
@@ -89,6 +95,14 @@ public class LogRangeAI : CombatEntity
         }
     }
 
+    private void ChangeState(State newstate)
+    {
+        if (CurrentState != newstate)
+        {
+            CurrentState = newstate;
+        }
+    }
+
     private void SetDirection()
     {
         direction = Vector3.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
@@ -97,6 +111,7 @@ public class LogRangeAI : CombatEntity
 
     private IEnumerator RangeAttack()
     {
+        attackCooldown = 2f;
         ChangeState(State.attack);
         animator.SetBool("Attacking", true);
         Vector2 direction = target.position - transform.position;
@@ -108,11 +123,8 @@ public class LogRangeAI : CombatEntity
         animator.SetBool("Attacking", false);
     }
 
-    private void ChangeState(State newstate)
+    private void AttackTimer()
     {
-        if (CurrentState != newstate)
-        {
-            CurrentState = newstate;
-        }
+        if (attackCooldown >= 0f && animator.GetBool("WakeUp")) attackCooldown -= Time.fixedDeltaTime;
     }
 }

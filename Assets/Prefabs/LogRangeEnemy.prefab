@@ -156,9 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 50
-  currentState: 0
-  staggerTimer: 0.05
-  invincible: 0
   rigid: {fileID: 0}
   MoveSpeed: 3
   target: {fileID: 0}

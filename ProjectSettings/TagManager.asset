@@ -9,6 +9,8 @@ TagManager:
   - Boss
   - Terrain
   - StrongProjectile
+  - Sign
+  - Text
   layers:
   - Default
   - TransparentFX

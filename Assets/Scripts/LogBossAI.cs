@@ -107,7 +107,7 @@ public class LogBossAI : CombatEntity
         if(!animator.GetBool("Sleeping")) attackCooltime -= Time.fixedDeltaTime;
         if (attackCooltime <= 0f)
         {
-            int attack = Random.Range(3, 4);
+            int attack = Random.Range(1, 4);
             switch(attack)
             {
                 case 1:
