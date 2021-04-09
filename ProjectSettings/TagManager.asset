@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Projectile
+  - Boss
+  - Terrain
+  - Sign
+  - Text
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: 'BaseBackGround '
+    uniqueID: 56127877
+    locked: 0
+  - name: Background
+    uniqueID: 2466370581
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 3873723021
+    locked: 0
+  - name: Bridges
+    uniqueID: 3118096319
+    locked: 0
+  - name: Player
+    uniqueID: 2029948005
+    locked: 0
+  - name: Priority
+    uniqueID: 1124841981
+    locked: 0
