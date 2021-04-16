@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1188494791476760543}
   - component: {fileID: 985175046746369894}
   - component: {fileID: -5687995409290611422}
+  - component: {fileID: 4640290635692316663}
   m_Layer: 0
   m_Name: Statues
   m_TagString: Untagged
@@ -45,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.52163315, y: 0.28981528}
@@ -110,3 +111,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4640290635692316663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894571164625364967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d7faf5e45b70d44b7e717d11f9bb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortOnce: 1

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour
 {
-    [SerializeField] private string axisTag;
-    private Transform axis;
+    [SerializeField] private Transform axis;
 
     private Vector3 position;
     [SerializeField] private float distance;
@@ -13,13 +12,8 @@ public class Orbit : MonoBehaviour
     [SerializeField] private float travelSpeed;
     [SerializeField] private float orbitSpeed;
 
+    public Transform Axis { get => axis; set => axis = value; }
     public float Angle { get => angle; set => angle = value; }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        axis = GameObject.FindWithTag(axisTag).transform;
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -28,6 +22,6 @@ public class Orbit : MonoBehaviour
         position = Quaternion.AngleAxis(Angle, Vector3.forward) * position;
         Angle += orbitSpeed * Time.fixedDeltaTime;
         distance += travelSpeed * Time.fixedDeltaTime;
-        transform.position = axis.position + position;
+        transform.position = Axis.position + position;
     }
 }

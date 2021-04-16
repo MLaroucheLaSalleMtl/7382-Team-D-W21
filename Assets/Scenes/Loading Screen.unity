@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 798.81, y: 33.56201}
-  m_SizeDelta: {x: 322.384, y: 67.124}
+  m_AnchoredPosition: {x: 800, y: 35}
+  m_SizeDelta: {x: 325, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29550038
 MonoBehaviour:
@@ -240,8 +240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -472.4253}
-  m_SizeDelta: {x: 0, y: -944.851}
+  m_AnchoredPosition: {x: 0, y: -479.99988}
+  m_SizeDelta: {x: 0, y: -960.0002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121961268
 MonoBehaviour:
@@ -558,11 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1156646728}
-  speed: 50
-  multiplier: 1
-  input: {x: 0, y: 0}
-  space: 0
-  originalPosition: {x: 0, y: 0, z: 0}
+  sceneToLoad: World
 --- !u!1 &853003298
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +571,7 @@ GameObject:
   - component: {fileID: 853003301}
   - component: {fileID: 853003300}
   m_Layer: 5
-  m_Name: Reverse text
+  m_Name: Reverse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,8 +593,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 798.81, y: -20.2}
-  m_SizeDelta: {x: 322.384, y: 94.147}
+  m_AnchoredPosition: {x: 800, y: -20}
+  m_SizeDelta: {x: 325, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853003300
 MonoBehaviour:
@@ -655,6 +651,7 @@ GameObject:
   - component: {fileID: 967462812}
   - component: {fileID: 967462811}
   - component: {fileID: 967462815}
+  - component: {fileID: 967462816}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -763,6 +760,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &967462816
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967462810}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3e48ac70f33a42b42afcfcc16ee62f79, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1056487757
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,8 +890,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -798.813, y: 0.0013622}
-  m_SizeDelta: {x: 322.384, y: 134.55}
+  m_AnchoredPosition: {x: -800, y: 0}
+  m_SizeDelta: {x: 325, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056487759
 MonoBehaviour:
@@ -876,7 +969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000019312, y: -1946.98}
+  m_AnchoredPosition: {x: 0, y: -2200}
   m_SizeDelta: {x: 1800, y: 3000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156646730
@@ -910,19 +1003,33 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 2
-  m_Text: "the year is 2040 the world has been decimated and has reverted into a
-    more medieval world. Trumps, decisions to leave the Paris Accord along with other
-    horrible decisions caused and chain reaction within the environment. The toxic
-    chemicals sparked a form of evolution within the trees causing them to gain sentience
-    and have begun to fight back against humanity. The constant battles with the
-    trees caused other things to evolve and ended up creating a world teeming with
-    mana. The constant battles and the creature\u2019s ability to harness mana before
-    humanity has caused humanity to be pushed to the brink reverting them back to
-    the castle age after being able to harness the ability to mana themselves. it
-    is your mission to defeat all the creatures and their masters and reclaim what
-    was once the best country on earth.  "
+  m_Text: 'The year is 2028.
+
+
+    After Donald Trump''s third re-election, America
+    has been decimated due to his terrible environmental politics.
+
+
+    The toxic
+    wastes mutated plants, animals and even inanimate objects, turning them into
+    hostile entities.
+
+
+    Some humans gained the ability to use magic, but most
+    in turn lost their sanity.
+
+
+    However, not all is lost.
+
+
+    You have also
+    become able to use magic, more potent than anyone else.
+
+
+    Maybe with your
+    powers, you can save America.'
 --- !u!222 &1156646731
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -965,8 +1072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00096951, y: -0.074798}
-  m_SizeDelta: {x: 1920, y: 134.7}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1210536268
 MonoBehaviour:

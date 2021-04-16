@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GolemBossAI : CombatEntity
 {
@@ -13,7 +14,7 @@ public class GolemBossAI : CombatEntity
     private float moveSpeed = 2f;
 
     private Vector3 skillDirection;
-    private float attackCooltime = 0f;
+    private float attackCooltime = 4f;
 
     [SerializeField] private GameObject earthShieldPrefab;
     private int earthShieldCount = 5;
@@ -21,8 +22,17 @@ public class GolemBossAI : CombatEntity
 
     [SerializeField] private GameObject fallingRockPrefab;
     [SerializeField] private GameObject roomAnchor;
-    private int randomFallingRockCount = 15;
-    private int trailingFallingRockCount = 8;
+    [SerializeField] private CameraShake camShake;
+    private int randomFallingRockCount = 20;
+    private int trailingFallingRockCount = 10;
+
+    [SerializeField] private GameObject bossLock;
+    [SerializeField] private GameObject textBox;
+    [SerializeField] private Text text;
+    [SerializeField] private FinalDoor finalDoor;
+
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private PlayerMovement player;
 
     private void FacePlayer()
     {
@@ -30,6 +40,7 @@ public class GolemBossAI : CombatEntity
         animator.SetFloat("X", direction.x);
         animator.SetFloat("Y", direction.y);
     }
+
     private void MoveBoss()
     {
         if (Vector3.Distance(transform.position, target.transform.position) > chaseRange && attackCooltime <= 3f)
@@ -53,6 +64,7 @@ public class GolemBossAI : CombatEntity
         {
             GameObject shield = Instantiate(earthShieldPrefab, transform.position, Quaternion.identity);
             Orbit script = shield.GetComponent<Orbit>();
+            script.Axis = gameObject.transform;
             script.Angle = (360f / earthShieldCount) * i;
         }
     }
@@ -61,7 +73,10 @@ public class GolemBossAI : CombatEntity
     {
         attackCooltime = 6f;
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.7f);
+        //camShake.enabled = !camShake.enabled;
+        //camShake.ShakingDuration = 1.5f;
+        yield return new WaitForSeconds(1.3f);
         int attack = Random.Range(1, 3);
         switch (attack)
         {
@@ -70,7 +85,7 @@ public class GolemBossAI : CombatEntity
                 break;
             case 2:
                 StartCoroutine(TrailingFallingRocks());
-                attackCooltime += 3f;
+                attackCooltime += 2f;
                 break;
         }
     }
@@ -92,8 +107,41 @@ public class GolemBossAI : CombatEntity
         for (int i = 0; i < trailingFallingRockCount; i++)
         {
             Instantiate(fallingRockPrefab, target.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
+    }
+
+    public override void Die()
+    {
+        if (IsDead())
+        {
+            if (!HasDied)
+            {
+                HasDied = true;
+                animator.SetTrigger("Die");
+                CancelInvoke();
+                StopAllCoroutines();
+                StartCoroutine(SkillLevelUp());
+                finalDoor.DeadBoss++;
+
+                //Marco
+                healthBar.SetActive(false);
+                player.ChangeMusic = true;
+            }
+        }
+    }
+
+    private IEnumerator SkillLevelUp()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().EarthShieldCount = 5;
+        textBox.SetActive(true);
+        text.text = "YOUR SKILL EARTH SHIELD HAS BEEN POWERED UP!" +
+            "\nIT WILL NOW CREATE 5 ROCKS!";
+        yield return new WaitForSeconds(4f);
+        textBox.SetActive(false);
+        bossLock.SetActive(false);
+        Destroy(gameObject);
     }
 
     // Start is called before the first frame update
@@ -108,16 +156,20 @@ public class GolemBossAI : CombatEntity
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveBoss();
-        attackCooltime -= Time.fixedDeltaTime;
-        earthShieldCooldown -= Time.fixedDeltaTime;
-        if (earthShieldCooldown <= 0f && attackCooltime <= 0f)
+        if (!IsDead())
         {
-            StartCoroutine(EarthShield());
+            MoveBoss();
+            attackCooltime -= Time.fixedDeltaTime;
+            earthShieldCooldown -= Time.fixedDeltaTime;
+            if (earthShieldCooldown <= 0f && attackCooltime <= 0f)
+            {
+                StartCoroutine(EarthShield());
+            }
+            if (attackCooltime <= 0f && Vector3.Distance(transform.position, target.transform.position) < chaseRange)
+            {
+                StartCoroutine(GroundSlam());
+            }
         }
-        if (attackCooltime <= 0f && Vector3.Distance(transform.position, target.transform.position) < chaseRange)
-        {
-            StartCoroutine(GroundSlam());
-        }
+        Die();
     }
 }

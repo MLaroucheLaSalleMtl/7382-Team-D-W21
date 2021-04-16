@@ -50,6 +50,9 @@ TextureImporter:
   - first:
       213: -5610590915975366471
     second: TrumpUnlockedDoor
+  - first:
+      213: -7935097258379791595
+    second: BigHouse
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -852,7 +855,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 9
-      pivot: {x: 0.45950496, y: 0.2920189}
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1041,7 +1044,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5101235, y: 0.32789803}
+      pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1587,7 +1590,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 9
-      pivot: {x: 0.48566055, y: 0.14858246}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2384,8 +2387,8 @@ TextureImporter:
         y: 528
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3406,27 +3409,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_161
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 496
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71572e08f3f0f04b0800000000000000
-      internalID: -5472138256812182249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Overworld_162
       rect:
         serializedVersion: 2
@@ -4085,8 +4067,8 @@ TextureImporter:
         y: 480
         width: 48
         height: 16
-      alignment: 9
-      pivot: {x: 0.5022448, y: 0.28448868}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5509,12 +5491,12 @@ TextureImporter:
       name: SmallHouse
       rect:
         serializedVersion: 2
-        x: 209
+        x: 208
         y: 448
-        width: 31
+        width: 32
         height: 48
       alignment: 9
-      pivot: {x: 0.49061832, y: 0.15666072}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -7235,8 +7217,8 @@ TextureImporter:
         y: 416
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -8538,7 +8520,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.510798, y: 0.40641785}
+      pivot: {x: 0.510798, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -17938,7 +17920,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_965
+      name: OpenDoor1
       rect:
         serializedVersion: 2
         x: 112
@@ -17959,7 +17941,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_966
+      name: OpenDoor2
       rect:
         serializedVersion: 2
         x: 128
@@ -18526,7 +18508,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_995
+      name: OpenDoor3
       rect:
         serializedVersion: 2
         x: 112
@@ -18547,7 +18529,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_996
+      name: OpenDoor4
       rect:
         serializedVersion: 2
         x: 128
@@ -21130,7 +21112,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_1154
+      name: BottomDoor1
       rect:
         serializedVersion: 2
         x: 80
@@ -21151,7 +21133,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_1155
+      name: BottomDoor2
       rect:
         serializedVersion: 2
         x: 96
@@ -21587,6 +21569,27 @@ TextureImporter:
       bones: []
       spriteID: 9b83141c94d2322b0800000000000000
       internalID: -5610590915975366471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigHouse
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 496
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513b810e51fd0e190800000000000000
+      internalID: -7935097258379791595
       vertices: []
       indices: 
       edges: []

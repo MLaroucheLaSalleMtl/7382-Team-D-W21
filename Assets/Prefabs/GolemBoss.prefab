@@ -27,10 +27,83 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 263624065121912015}
   - {fileID: 8846051770057869750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1818205169244883358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263624065121912015}
+  - component: {fileID: 492985235360355336}
+  - component: {fileID: 7989553453626235366}
+  m_Layer: 0
+  m_Name: GolemBossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263624065121912015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818205169244883358}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalScale: {x: 24, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4615940707839263616}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &492985235360355336
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818205169244883358}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &7989553453626235366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818205169244883358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f1612cca1bf4c4b95218ed9e887087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golemBoss: {fileID: 8846051770057869751}
+  bossLock: {fileID: 0}
 --- !u!1 &8846051769097102105
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8846051770057869750
 Transform:
   m_ObjectHideFlags: 0
@@ -366,7 +439,7 @@ Transform:
   - {fileID: 8846051769097102104}
   - {fileID: 8846051769908442768}
   m_Father: {fileID: 4615940707839263616}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8846051770057869745
 MonoBehaviour:
@@ -380,10 +453,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c81f6f84152d8d4cbdc0e65d7baab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 800
+  hp: 1000
   earthShieldPrefab: {fileID: 5857186492107179359, guid: 01d20415ad8ca5d419c7ac8d9b4cc8ac, type: 3}
   fallingRockPrefab: {fileID: 7816204063710205007, guid: 848c31df66f864a468c2c6bd66f25708, type: 3}
   roomAnchor: {fileID: 508893897843534421}
+  camShake: {fileID: 0}
+  locks:
+  - {fileID: 0}
+  textBox: {fileID: 0}
+  text: {fileID: 0}
 --- !u!212 &8846051770057869746
 SpriteRenderer:
   m_ObjectHideFlags: 0

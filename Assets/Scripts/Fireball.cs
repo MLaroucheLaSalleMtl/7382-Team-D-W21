@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fireball : Projectile
 {
     [SerializeField] private GameObject explosionPrefab;
-
+   
     private void OnTriggerEnter2D(Collider2D collider)
     {
         for (int i = 0; i < TargetsTag.Length; i++)

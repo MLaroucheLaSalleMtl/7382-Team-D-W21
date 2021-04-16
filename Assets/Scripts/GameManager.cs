@@ -14,29 +14,4 @@ public class GameManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    private void Defeat()
-    {
-        if (player.IsDead())
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
-
-    private void VictoryScreen()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Defeat();
-    }
 }

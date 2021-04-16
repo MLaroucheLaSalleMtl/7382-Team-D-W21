@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireBossAI : CombatEntity
 {
@@ -23,6 +24,15 @@ public class FireBossAI : CombatEntity
     private int counter = 0;
     [SerializeField] private GameObject counterPrefab;
 
+    private Vector2 originalPosition;
+    private SpriteRenderer sprite;
+    [SerializeField] private GameObject bossLock;
+    [SerializeField] private GameObject textBox;
+    [SerializeField] private Text text;
+    [SerializeField] private FinalDoor finalDoor;
+
+    [SerializeField] private GameObject healthBar; //Marco 
+    [SerializeField] private PlayerMovement player;
 
     private void FacePlayer()
     {
@@ -95,6 +105,49 @@ public class FireBossAI : CombatEntity
         }
     }
 
+    public override void Die()
+    {
+        if (IsDead())
+        {
+            if (!HasDied)
+            {
+                HasDied = true;
+                originalPosition = transform.position;
+                animator.SetTrigger("Die");
+                sprite = GetComponent<SpriteRenderer>();
+                sprite.color = Color.gray;
+                CancelInvoke();
+                StopAllCoroutines();
+                StartCoroutine(SkillLevelUp());
+                finalDoor.DeadBoss++;
+
+                //Marco
+                healthBar.SetActive(false);
+                player.ChangeMusic = true;
+            }
+
+            if (sprite.color.a > 0f)
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a - 0.5f * Time.deltaTime);
+                float x = Random.Range(-0.1f, 1f);
+                transform.position = new Vector3(originalPosition.x + x, transform.position.y, transform.position.z);
+            }
+        }
+    }
+
+    private IEnumerator SkillLevelUp()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().FireballLevel = 2;
+        textBox.SetActive(true);
+        text.text = "YOUR SKILL FIREBALL HAS BEEN POWERED UP!" +
+            "\nIT NOW HAS A BIGGER EXPLOSION!";
+        yield return new WaitForSeconds(4f);
+        textBox.SetActive(false);
+        bossLock.SetActive(false);
+        Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,24 +160,28 @@ public class FireBossAI : CombatEntity
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveBoss();
-        Counter();
-        attackCooltime -= Time.fixedDeltaTime;
-        if (attackCooltime <= 0f)
+        if (!IsDead())
         {
-            int attack = Random.Range(1, 4);
-            switch (attack)
+            MoveBoss();
+            Counter();
+            attackCooltime -= Time.fixedDeltaTime;
+            if (attackCooltime <= 0f)
             {
-                case 1:
-                    Fireball();
-                    break;
-                case 2:
-                    StartCoroutine(FlameWall());
-                    break;
-                case 3:
-                    Fireball();
-                    break;
+                int attack = Random.Range(1, 4);
+                switch (attack)
+                {
+                    case 1:
+                        Fireball();
+                        break;
+                    case 2:
+                        StartCoroutine(FlameWall());
+                        break;
+                    case 3:
+                        Fireball();
+                        break;
+                }
             }
         }
+        Die();
     }
 }

@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ScrollingText : MonoBehaviour
 {
-    public Transform text;
-    public float speed = 50f;
-    public float multiplier = 1f;
-    public Vector2 input;
-    public bool space;
-    public Vector3 originalPosition;
+    [SerializeField] private Transform text;
+    private float speed = 75f;
+    private float multiplier = 1f;
+    private Vector2 input;
+    private bool space;
+    private Vector3 originalPosition;
+
+    [SerializeField] private string sceneToLoad;
     
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class ScrollingText : MonoBehaviour
 
     public void ResetText()
     {
-        if(text.transform.localPosition.y > 2000)
+        if(text.transform.localPosition.y > 2200)
         {
             text.transform.position = originalPosition;
         }
@@ -41,7 +43,7 @@ public class ScrollingText : MonoBehaviour
     {
         if(space)
         {
-            SceneManager.LoadScene("World");
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 

@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6848401016365374797
 Transform:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2029948005
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: -7768669138598317429, guid: f2a4347deaf8582488e129916dc29d68, type: 3}
   m_Color: {r: 1, g: 0.6040579, b: 0, a: 1}
@@ -171,3 +171,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   explosionPrefab: {fileID: 5761371979614453917, guid: 333cf259b0b18ca4f923d5224d55868b, type: 3}
+  followPlayer: {fileID: 0}
+  selfDestruct: {fileID: 0}

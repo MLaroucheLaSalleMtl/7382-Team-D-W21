@@ -39,11 +39,6 @@ public class BossMainFireball : Projectile
             Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         Lifetime -= Time.fixedDeltaTime;

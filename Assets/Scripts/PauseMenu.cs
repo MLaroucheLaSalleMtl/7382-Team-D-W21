@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
-    public GameObject PauseMenuUI;
+    [SerializeField] private GameObject PauseMenuUI;
+    private bool pause = false;
 
     public void Resume()
     {
@@ -14,6 +16,10 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        pause = context.performed;
+    }
     public void Pause()
     {
         PauseMenuUI.SetActive(true);
@@ -25,8 +31,9 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("Joystick button 7"))
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pause)
         {
+            pause = false;
             if(isPaused)
             {
                 Resume();

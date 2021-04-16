@@ -9,8 +9,11 @@ public class SpawnBoss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bossAnimator.SetBool("Sleeping", false);
-        bossLock.SetActive(true);
-        Destroy(gameObject);
+        if (collision.CompareTag("Player"))
+        {
+            bossAnimator.SetBool("Sleeping", false);
+            bossLock.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 }

@@ -4,35 +4,24 @@ using UnityEngine;
 
 public class Healing : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject platform;
-    public Player PlayerStat;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-        
-    }
+    [SerializeField] private GameObject healPrefab;
+    [SerializeField] private AudioSource healSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Player") && PlayerStat.Hp < 100 || PlayerStat.Mp < 100)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerStat.Hp = PlayerStat.MaxHp;
-            PlayerStat.Mp = PlayerStat.MaxMp;
+            Player player = collision.GetComponent<Player>();
+
+            if (player.Hp < player.MaxHp || player.Mp < player.MaxMp)
+            {
+                player.Hp = player.MaxHp;
+                player.Mp = player.MaxMp;
+                GameObject heal = Instantiate(healPrefab, transform.position, Quaternion.identity);
+                Heal script = heal.GetComponent<Heal>();
+                script.UserTag = "Player";
+                healSound.Play();
+            }
         }
-        Debug.Log("Healed");
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

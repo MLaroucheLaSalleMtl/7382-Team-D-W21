@@ -14,10 +14,12 @@ public class CombatEntity : MonoBehaviour
     private float starggerDuration = 0.3f;
     private float staggerTimer = 0.3f;
     private bool invincible = false;
+    private bool hasDied = false;
 
     public float Hp { get => hp; set => hp = value; }
     public State CurrentState { get => currentState; set => currentState = value; }
     public bool Invincible { get => invincible; set => invincible = value; }
+    public bool HasDied { get => hasDied; set => hasDied = value; }
 
     public virtual void ReceiveDamage(float damage)
     {

@@ -17,8 +17,6 @@ public class BombEnemy : CombatEntity
     private float attackCooldown = 0f;
     [SerializeField] private GameObject explosionPrefab;
 
-    private Vector3 test;
-
     private void FacePlayer()
     {
         direction = target.position - transform.position;
@@ -53,6 +51,7 @@ public class BombEnemy : CombatEntity
         if(Vector3.Distance(transform.position, target.transform.position) <= attackRange && attackCooldown <= 0f)
         {
             attackCooldown = 1f;
+            rigid.velocity = Vector3.zero;
             rigid.isKinematic = true;
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject, 2f);

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Signs : MonoBehaviour
 {
     public GameObject textBox;
-    public GameObject sign;
+    public string textContent;
+    public Text text;
     
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,10 @@ public class Signs : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            text.text = textContent;
             textBox.SetActive(true);
         }
-        Debug.Log("Sign");
+        //Debug.Log("Sign");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -30,12 +32,6 @@ public class Signs : MonoBehaviour
         {
             textBox.SetActive(false);
         }
-        Debug.Log("Left sign");
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
+        //Debug.Log("Left sign");
     }
 }

@@ -7,6 +7,6 @@ public class StartGame : MonoBehaviour
 {
     public void BeginGame()
     {
-        SceneManager.LoadScene("DemoMap2");
+        SceneManager.LoadScene("Loading Screen");
     }
 }

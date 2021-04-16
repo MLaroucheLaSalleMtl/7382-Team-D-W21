@@ -107,14 +107,12 @@ public class MageAI : CombatEntity
     {
         attackCooldown = 2f;
         ChangeState(State.attack);
-        animator.SetBool("Attacking", true);
         Vector2 direction = target.position - transform.position;
         GameObject missile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Rigidbody2D rigid = missile.GetComponent<Rigidbody2D>();
         rigid.AddForce(direction.normalized * 8f, ForceMode2D.Impulse);
         yield return new WaitForSeconds(2f);
         ChangeState(State.idle);
-        animator.SetBool("Attacking", false);
     }
 
     private void AttackTimer()

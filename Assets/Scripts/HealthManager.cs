@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public Player player;
-    public Image healthbar;
-    public Image manaBar;
+    [SerializeField] private Player player;
+    [SerializeField] private Image healthbar;
+    [SerializeField] private Image manaBar;
 
     public void UpdateHealth()
     {

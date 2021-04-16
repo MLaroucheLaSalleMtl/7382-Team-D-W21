@@ -15,16 +15,4 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IDeselectHa
     {
         GetComponent<Selectable>().Select();
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

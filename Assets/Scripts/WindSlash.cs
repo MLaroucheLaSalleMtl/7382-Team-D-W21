@@ -14,7 +14,7 @@ public class WindSlash : Projectile
             }
         }
 
-        if (collider.gameObject.tag == "Terrain")
+        if (collider.gameObject.tag == "Terrain" || collider.gameObject.tag == "Fire")
             Destroy(gameObject);
     }
 }
